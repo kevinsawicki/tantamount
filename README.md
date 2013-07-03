@@ -4,9 +4,8 @@ This Node module is port to CoffeeScript of the old `isEqual` implementation
 from [underscore](http://underscorejs.org/#isEqual) that was removed in
 [this commit](https://github.com/documentcloud/underscore/commit/f97783bd177e9f2fad49eadf1ae19c303150c647).
 
-Basically it is the same as underscore's current `isEqual` function except that
-is supports calling an optional `isEqual` function provided by the values being
-tested.
+It is basically the same as underscore's current `isEqual` function except that
+it uses either value's `isEqual` function when available.
 
 ## Installing
 
