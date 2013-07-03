@@ -28,3 +28,12 @@ Tests if `a` is equal to `b`.
 `b` - A value to test.
 
 Returns `true` if the two objects are equal, `false` otherwise.
+
+### From Jasmine specs
+
+You can use this library as your [Jasmine](https://github.com/pivotal/jasmine)
+equality tester by doing:
+
+```coffeescript
+jasmine.getEnv().addEqualityTester(require('tantamount'))
+```
