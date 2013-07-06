@@ -1,8 +1,10 @@
 _ = require 'underscore'
 
+_isEqual = _.isEqual
+
 isEqual = (a, b, aStack=[], bStack=[]) ->
-  return _.isEqual(a, b) if a is b
-  return _.isEqual(a, b) if _.isFunction(a) or _.isFunction(b)
+  return _isEqual(a, b) if a is b
+  return _isEqual(a, b) if _.isFunction(a) or _.isFunction(b)
   return a.isEqual(b) if _.isFunction(a?.isEqual)
   return b.isEqual(a) if _.isFunction(b?.isEqual)
 
@@ -41,7 +43,7 @@ isEqual = (a, b, aStack=[], bStack=[]) ->
           bKeyCount++ if _.has(b, key)
         equal = aKeyCount is bKeyCount
   else
-    equal = _.isEqual(a, b)
+    equal = _isEqual(a, b)
 
   aStack.pop()
   bStack.pop()
