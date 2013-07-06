@@ -1,4 +1,4 @@
-# Tantamount
+# Tantamount [![Build Status](https://travis-ci.org/kevinsawicki/tantamount.png)](https://travis-ci.org/kevinsawicki/tantamount)
 
 This Node module is port to CoffeeScript of the old `isEqual` implementation
 from [underscore](http://underscorejs.org/#isEqual) that was removed in
