@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Tantamount by kevinsawicki</title>
+    <title>tantamount by kevinsawicki</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Tantamount</h1>
+        <h1>tantamount</h1>
         <p>Yet another equality node module</p>
 
         <p class="view"><a href="https://github.com/kevinsawicki/tantamount">View the Project on GitHub <small>kevinsawicki/tantamount</small></a></p>
@@ -29,7 +29,8 @@
       </header>
       <section>
         <h1>
-<a name="tantamount" class="anchor" href="#tantamount"><span class="octicon octicon-link"></span></a>Tantamount</h1>
+<a name="tantamount-" class="anchor" href="#tantamount-"><span class="octicon octicon-link"></span></a>Tantamount <a href="https://travis-ci.org/kevinsawicki/tantamount"><img src="https://travis-ci.org/kevinsawicki/tantamount.png" alt="Build Status"></a>
+</h1>
 
 <p>This Node module is port to CoffeeScript of the old <code>isEqual</code> implementation
 from <a href="http://underscorejs.org/#isEqual">underscore</a> that was removed in
@@ -62,12 +63,20 @@ it uses either value's <code>isEqual</code> function when available.</p>
 <p>Returns <code>true</code> if the two objects are equal, <code>false</code> otherwise.</p>
 
 <h3>
-<a name="from-jasmine-specs" class="anchor" href="#from-jasmine-specs"><span class="octicon octicon-link"></span></a>From Jasmine specs</h3>
+<a name="using-with-jasmine" class="anchor" href="#using-with-jasmine"><span class="octicon octicon-link"></span></a>Using with Jasmine</h3>
 
 <p>You can use this library as your <a href="https://github.com/pivotal/jasmine">Jasmine</a>
 equality tester by doing:</p>
 
 <div class="highlight"><pre><span class="nx">jasmine</span><span class="p">.</span><span class="nx">getEnv</span><span class="p">().</span><span class="nx">addEqualityTester</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s">'tantamount'</span><span class="p">))</span>
+</pre></div>
+
+<h3>
+<a name="using-with-underscore" class="anchor" href="#using-with-underscore"><span class="octicon octicon-link"></span></a>Using with Underscore</h3>
+
+<p>You can use this library to replace the default <code>_.isEqual</code> by doing:</p>
+
+<div class="highlight"><pre><span class="nx">require</span><span class="p">(</span><span class="s">'underscore'</span><span class="p">).</span><span class="nv">isEqual = </span><span class="nx">require</span><span class="p">(</span><span class="s">'tantamount'</span><span class="p">)</span>
 </pre></div>
       </section>
       <footer>
