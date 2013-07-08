@@ -29,11 +29,19 @@ Tests if `a` is equal to `b`.
 
 Returns `true` if the two objects are equal, `false` otherwise.
 
-### From Jasmine specs
+### Using with Jasmine
 
 You can use this library as your [Jasmine](https://github.com/pivotal/jasmine)
 equality tester by doing:
 
 ```coffeescript
 jasmine.getEnv().addEqualityTester(require('tantamount'))
+```
+
+### Using with Underscore
+
+You can use this library to replace the default `_.isEqual` by doing:
+
+```coffeescript
+require('underscore').isEqual = require('tantamount')
 ```
