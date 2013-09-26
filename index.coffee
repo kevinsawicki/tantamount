@@ -21,6 +21,8 @@ isEqual = (a, b, aStack=[], bStack=[]) ->
       unless isEqual(aElement, b[i], aStack, bStack)
         equal = false
         break
+  else if _.isRegExp(a) and _.isRegExp(b)
+    equal = _isEqual(a, b)
   else if _.isObject(a) and _.isObject(b)
     aCtor = a.constructor
     bCtor = b.constructor
