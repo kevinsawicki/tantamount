@@ -22,3 +22,7 @@ describe 'isEqual(a, b)', ->
     expect(isEqual(a, b)).toBe true
     expect(isEqual(null, b)).toBe false
     expect(isEqual('test', b)).toBe true
+
+    expect(isEqual(/a/, /a/g)).toBe false
+    expect(isEqual(/a/, /b/)).toBe false
+    expect(isEqual(/a/gi, /a/gi)).toBe true
