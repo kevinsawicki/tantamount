@@ -36,6 +36,6 @@
     "grunt-shell": "~0.3.0"
   },
   "dependencies": {
-    "underscore": "~1.4.4"
+    "underscore": "~1.5.2"
   }
 }
