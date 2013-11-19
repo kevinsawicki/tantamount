@@ -26,3 +26,28 @@ describe 'isEqual(a, b)', ->
     expect(isEqual(/a/, /a/g)).toBe false
     expect(isEqual(/a/, /b/)).toBe false
     expect(isEqual(/a/gi, /a/gi)).toBe true
+
+  it "calls custom equality methods with stacks so they can participate in cycle-detection", ->
+    class X
+      isEqual: (b, aStack, bStack) ->
+        isEqual(@y, b.y, aStack, bStack)
+
+    class Y
+      isEqual: (b, aStack, bStack) ->
+        isEqual(@x, b.x, aStack, bStack)
+
+    x1 = new X
+    y1 = new Y
+    x1.y = y1
+    y1.x = x1
+
+    x2 = new X
+    y2 = new Y
+    x2.y = y2
+    y2.x = x2
+
+    expect(isEqual(x1, x2)).toBe true
+
+  it "only accepts arrays as stack arguments to avoid accidentally calling with other objects", ->
+    expect(-> isEqual({}, {}, "junk")).not.toThrow()
+    expect(-> isEqual({}, {}, [], "junk")).not.toThrow()

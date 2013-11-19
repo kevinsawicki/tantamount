@@ -5,14 +5,15 @@ _isEqual = _.isEqual
 isEqual = (a, b, aStack=[], bStack=[]) ->
   return _isEqual(a, b) if a is b
   return _isEqual(a, b) if _.isFunction(a) or _.isFunction(b)
-  return a.isEqual(b) if _.isFunction(a?.isEqual)
-  return b.isEqual(a) if _.isFunction(b?.isEqual)
 
   stackIndex = aStack.length
   while stackIndex--
     return bStack[stackIndex] is b if aStack[stackIndex] is a
   aStack.push(a)
   bStack.push(b)
+
+  return a.isEqual(b, aStack, bStack) if _.isFunction(a?.isEqual)
+  return b.isEqual(a, bStack, aStack) if _.isFunction(b?.isEqual)
 
   equal = false
   if _.isArray(a) and _.isArray(b) and a.length is b.length
@@ -51,4 +52,8 @@ isEqual = (a, b, aStack=[], bStack=[]) ->
   bStack.pop()
   equal
 
-module.exports = (a, b) -> isEqual(a, b)
+module.exports = (a, b, aStack, bStack) ->
+  if _.isArray(aStack) and _.isArray(bStack)
+    isEqual(a, b, aStack, bStack)
+  else
+    isEqual(a, b)
