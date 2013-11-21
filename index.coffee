@@ -12,11 +12,12 @@ isEqual = (a, b, aStack=[], bStack=[]) ->
   aStack.push(a)
   bStack.push(b)
 
-  return a.isEqual(b, aStack, bStack) if _.isFunction(a?.isEqual)
-  return b.isEqual(a, bStack, aStack) if _.isFunction(b?.isEqual)
-
   equal = false
-  if _.isArray(a) and _.isArray(b) and a.length is b.length
+  if _.isFunction(a?.isEqual)
+    equal = a.isEqual(b, aStack, bStack)
+  else if _.isFunction(b?.isEqual)
+    equal = b.isEqual(a, bStack, aStack)
+  else if _.isArray(a) and _.isArray(b) and a.length is b.length
     equal = true
     for aElement, i in a
       unless isEqual(aElement, b[i], aStack, bStack)
